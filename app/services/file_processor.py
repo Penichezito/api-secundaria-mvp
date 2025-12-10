@@ -117,7 +117,7 @@ class FileProcessor:
     def get_file_type(self, filename):
         """Retorna o tipo MIME do arquivo"""
         mime_type, _ = mimetypes.guess_type(filename)
-        return mime_type or "application/octet-stram"
+        return mime_type or "application/octet-stream"
     
     def get_file_category(self, mime_type):
         """Categoriza o arquivo usando lookups em dicionários"""
@@ -133,7 +133,7 @@ class FileProcessor:
         return "other"
     
     def analyze_file(self, file_path, mime_type):
-        """"Analisa arquivo e retorna tags apropriadas"""
+        """Analisa arquivo e retorna tags apropriadas"""
         category = self.get_file_category(mime_type)
 
         # Mapeamento de categoria para método de análise
@@ -247,7 +247,7 @@ class FileProcessor:
                 else:
                     tags.extend(["long-document", "book", "manual"])
 
-                # Extração de texto e vericação de palavras-chave(keywords)
+                # Extração de texto e verificação de palavras-chave(keywords)
                 text_sample = "".join([p.extract_text() for p in pdf.pages[:3]]).lower()
 
                 if text_sample:

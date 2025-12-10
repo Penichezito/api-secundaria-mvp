@@ -110,7 +110,7 @@ def update_file_tags(file_id):
             return jsonify({"error": "Arquivo não encontrado."}), 404
         
         return jsonify({
-            "messsage": "Tags atualizadas com sucesso.",
+            "message": "Tags atualizadas com sucesso.",
             "file_id": file_data["id"],
             "tags": file_data["tags"]       
         }), 200

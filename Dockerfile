@@ -6,7 +6,9 @@ WORKDIR /app
 # Variáveis de ambiente
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    PIP_NO_CACHE_DIR=1
+    PIP_NO_CACHE_DIR=1 \
+    FLASK_APP=app.main:create_app \
+    FLASK_ENV=development
 
 # Instala dependências do sistema
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -27,9 +29,5 @@ RUN mkdir -p uploads
 # Expõe porta
 EXPOSE 5000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:5000/api/files/health')" || exit 1
-
-# Comando para iniciar a aplicação
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "--timeout", "120", "main:create_app()"]
+# Comando para iniciar a aplicação com Flask
+CMD ["python", "-m", "flask", "run", "--host=0.0.0.0", "--port=5000"]

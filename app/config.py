@@ -15,7 +15,7 @@ class Config:
     )
 
     # API Externa (Google Cloud Vision)
-    GOOGLE_CLOUD_VISION_ENABLED = os.getenv("GOOGLE_CLOUD_VISION_ENABLED", "false").lower == "true"
+    GOOGLE_CLOUD_VISION_ENABLED = os.getenv("GOOGLE_CLOUD_VISION_ENABLED", "false").lower() == "true"
     GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 
     # Limites de Processamento 
