@@ -23,6 +23,9 @@ RUN pip install --upgrade pip && \
 # Copia código da aplicação
 COPY . .
 
+# Copia arquivo de credenciais do Google
+COPY google-credentials.json /app/google-credentials.json
+
 # Cria diretório de uploads
 RUN mkdir -p uploads
 

@@ -48,7 +48,7 @@ class StorageService:
             session.commit()
             session.refresh(file_record)
 
-            return file_record
+            return self._to_dict(file_record)  # ✅ Retorna dict em vez de model
         
         except Exception as e:
             session.rollback()

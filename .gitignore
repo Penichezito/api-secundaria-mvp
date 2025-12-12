@@ -1,6 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[codz]
+*.py[cod]
 *$py.class
 
 # C extensions
@@ -20,6 +20,35 @@ parts/
 sdist/
 var/
 wheels/
+
+# Environment variables (NUNCA commitar!)
+.env
+.env.local
+.env.*.local
+
+# Google Cloud credentials (NUNCA commitar!)
+google-credentials.json
+*.json
+!package.json
+!package-lock.json
+
+# Uploads
+uploads/
+*.pdf
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
 share/python-wheels/
 *.egg-info/
 .installed.cfg
