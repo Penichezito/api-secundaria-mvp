@@ -71,26 +71,26 @@ class VisionService:
             with open(image_path, "rb") as image_file:
                 content = image_file.read()
 
-                from google.cloud import vision
-                image = vision.Image(content=content)
+            from google.cloud import vision
+            image = vision.Image(content=content)
 
-                # Executa todas as análises em paralelo
-                tags = []
+            # Executa todas as análises em paralelo
+            tags = []
 
-                # 1. Detecção de labels
-                tags.extend(self._analyze_labels(image))
-                
-                # 2. Propriedades da imagem (cores)
-                tags.extend(self._analyze_colors(image))
-                
-                # 3. Detecção de texto
-                tags.extend(self._analyze_text(image))
-                
-                # 4. Safe Search (conteúdo)
-                tags.extend(self._analyze_safe_search(image))
-                
-                return tags
+            # 1. Detecção de labels
+            tags.extend(self._analyze_labels(image))
             
+            # 2. Propriedades da imagem (cores)
+            tags.extend(self._analyze_colors(image))
+            
+            # 3. Detecção de texto
+            tags.extend(self._analyze_text(image))
+            
+            # 4. Safe Search (conteúdo)
+            tags.extend(self._analyze_safe_search(image))
+            
+            return tags
+        
         except Exception as e:
             print(f"⚠️  Erro na análise com Vision API: {e}")
             return []
